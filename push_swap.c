@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:43 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/26 11:50:00 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:52:15 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	main(int ac, char **av)
 {
+	t_list **node;
+	t_list *stack;
 	char ***cttab;
 	char **ctab;
 	int *tab;
@@ -69,8 +71,23 @@ int	main(int ac, char **av)
 			tab[i] = ft_atoi(ctab[i]);
 			i++;
 		}
-		j = 0;
+		// j = 0;
+		// while (j < i)
+		// 	ft_printf("{%d}", tab[j++]);
+		j = 1;
+		node = (t_list **)malloc(i * sizeof(t_list *));
+		node[0] = ft_lstnew(tab[0]);
 		while (j < i)
-			ft_printf("{%d}", tab[j++]);
+		{
+			node[j] = ft_lstnew(tab[j]);
+			node[j - 1]->next = node[j];
+			j++;
+		}
+		stack = node[0];
+		while (stack)
+		{
+			printf("%d || %p==>", stack->content, &stack->next);
+			stack = stack->next;
+		}
 	}
 }

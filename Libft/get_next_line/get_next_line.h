@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 02:05:40 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/25 17:19:15 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:47:18 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../libft.h"
 
-size_t	ft_strlen_m(char *str);
+int	ft_strlen_m(char *str);
 char	*ft_substr_m(char *str, int start, int end);
 char	*ft_newline(char *str, int index);
 int		ft_strchr_m(char *str, char c);

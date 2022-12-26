@@ -6,15 +6,15 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 02:05:54 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/25 17:23:37 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:47:25 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen_m(char *str)
+int	ft_strlen_m(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (str && str[i])

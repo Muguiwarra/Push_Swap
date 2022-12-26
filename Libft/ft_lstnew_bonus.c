@@ -6,13 +6,13 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:17:08 by nabboune          #+#    #+#             */
-/*   Updated: 2022/10/25 01:22:15 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:41:59 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*head;
 
