@@ -6,7 +6,7 @@
 #    By: nabboune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 15:59:07 by nabboune          #+#    #+#              #
-#    Updated: 2022/12/25 23:00:34 by nabboune         ###   ########.fr        #
+#    Updated: 2022/12/27 01:03:43 by nabboune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	ft_stack_operations.c \
+		help_functions.c \
 		push_swap.c
 
 OBJS = $(SRCS:.c=.o)

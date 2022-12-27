@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 14:53:19 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/25 22:57:35 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/27 01:05:28 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,40 +28,40 @@ void	ft_end_of_stack(t_list *s)
 	}
 }
 
-void	ft_swap_a(t_list *a)
+void	ft_swap_a(t_list **a)
 {
 	t_list	*top;
 
-	top = a->next;
-	a->next = top->next;
-	top->next = a;
-	a = top;
+	top = (*a)->next;
+	(*a)->next = top->next;
+	top->next = *a;
+	*a = top;
 	ft_printf("sa\n");
 }
 
-void	ft_swap_b(t_list *b)
+void	ft_swap_b(t_list **b)
 {
 	t_list	*top;
 
-	top = b->next;
-	b->next = top->next;
-	top->next = b;
-	b = top;
+	top = (*b)->next;
+	(*b)->next = top->next;
+	top->next = *b;
+	*b = top;
 	ft_printf("sb\n");
 }
 
-void	ft_ss(t_list *a, t_list *b)
+void	ft_ss(t_list **a, t_list **b)
 {
 	t_list	*top;
 
-	top = a->next;
-	a->next = top->next;
-	top->next = a;
-	a = top;
-	top = b->next;
-	b->next = top->next;
-	top->next = b;
-	b = top;
+	top = (*a)->next;
+	(*a)->next = top->next;
+	top->next = *a;
+	*a = top;
+	top = (*b)->next;
+	(*b)->next = top->next;
+	top->next = *b;
+	*b = top;
 	ft_printf("ss\n");
 }
 
