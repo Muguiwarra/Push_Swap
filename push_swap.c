@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:43 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/27 01:46:42 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/27 20:37:52 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int ac, char **av)
 {
 	t_list *stack;
-	t_list *a;
 	char ***cttab;
 	char **ctab;
 	int *tab;
@@ -28,19 +27,6 @@ int	main(int ac, char **av)
 		ctab = ft_char_tab(size, cttab);
 		tab = ft_int_tab(size, ctab);
 		stack = ft_stack_creation(size, tab);
-		// TESTS
-		// Test 1 : Swap
-		a = stack;
-		ft_swap_a(&a);
-		while (a)
-		{
-			printf("%d ==> ", a->content);
-			a = a->next;
-		}
-		// Result Test 1 : OK
-
-		// Test 2 : Push
-
-		// Result Test 1 :
+		ft_tests(stack);
 	}
 }
