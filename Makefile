@@ -6,7 +6,7 @@
 #    By: nabboune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 15:59:07 by nabboune          #+#    #+#              #
-#    Updated: 2022/12/27 20:36:48 by nabboune         ###   ########.fr        #
+#    Updated: 2022/12/29 01:18:18 by nabboune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,19 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS =	ft_stack_operations.c \
-		help_functions.c \
+SRCS =	help_functions.c \
 		push_swap.c \
+		Stack_operations/helpers.c \
+		Stack_operations/push_no_print.c \
+		Stack_operations/reverse_rotate_no_print.c \
+		Stack_operations/rotate_no_print.c \
+		Stack_operations/swap_no_print.c \
+		Utils/printers.c \
+		Utils/push.c \
+		Utils/reverse_rotate.c \
+		Utils/rotate.c \
+		Utils/swap.c \
+		Sorting/algo.c \
 		tests.c
 
 OBJS = $(SRCS:.c=.o)
