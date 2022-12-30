@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:37:04 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/29 02:32:10 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/30 00:28:38 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,58 @@ int	ft_get_max(t_list *s)
 	return (max);
 }
 
-int	ft_is_sorted(t_list *s)
+int	ft_get_min(t_list *s)
+{
+	int	min;
+
+	min = s->content;
+	while (s)
+	{
+		if (s->content < min)
+			min = s->content;
+		s = s->next;
+	}
+	return (min);
+}
+
+int	ft_get_index(t_list *stack, int data)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		if (stack->content == data)
+			return (i);
+		i++;
+		stack = stack->next;
+	}
+	return (i);
+}
+
+int	ft_a_is_sorted(t_list *s)
+{
+	t_list	*tmp;
+
+	tmp = s->next;
+	while (tmp)
+	{
+		if (s->content > tmp->content)
+			return (0);
+		s = s->next;
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+int	ft_b_is_sorted(t_list *s)
 {
 	t_list *tmp;
 
 	tmp = s->next;
 	while (tmp)
 	{
-		if (s->content > tmp->content)
+		if (s->content < tmp->content)
 			return (0);
 		s = s->next;
 		tmp = tmp->next;

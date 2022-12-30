@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:50 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/29 00:43:55 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/30 01:11:55 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,21 @@ char	**ft_char_tab(int nb, char ***cttab);
 int		*ft_int_tab(int size, char **ctab);
 t_list	*ft_stack_creation(int size, int *tab);
 void	ft_print_single_operation(void (*operation)(t_list **));
-void	ft_print_double_operation(void (*operation)(t_list **, t_list **));
+void	ft_print_double_operation(void (*operation)(t_list **,
+													t_list **));
 
 void	ft_end_of_stack(t_list **s);
+int		ft_get_index(t_list *stack, int data);
 int		ft_get_max(t_list *s);
-int		ft_is_sorted(t_list *s);
+int		ft_get_min(t_list *s);
+int		ft_a_is_sorted(t_list *s);
+int		ft_b_is_sorted(t_list *s);
+void	ft_new_index(t_list **stack);
 
 void	ft_sort_2_numbers(t_list **a);
 void	ft_sort_3_numbers(t_list **a);
+void	ft_sort_50_numbers(t_list **a);
+void	ft_sort_400_numbers(t_list **a);
 
 void	ft_tests(t_list *stack);
 

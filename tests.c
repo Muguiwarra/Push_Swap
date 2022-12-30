@@ -23,27 +23,26 @@ void	ft_tests(t_list *stack)
 	// tmp = stack;
 	// while (tmp)
 	// {
-	// 	printf("%d ==> ", tmp->content);
+	// 	printf("{%d, %d} ==> ", tmp->content, tmp->index);
 	// 	tmp = tmp->next;
 	// }
 	// printf("\n");
 	// // Result Test 1 : OK
 
 	// // Test 2 : Pushing to an empty stack
-	// b = (t_list *)malloc(sizeof(t_list));
 	// b = NULL;
 	// ft_push_b(&a, &b);
 	// d = a;
 	// while (d)
 	// {
-	// 	printf("%d ==> ", d->content);
+	// 	printf("{%d, %d} ==> ", d->content, d->index);
 	// 	d = d->next;
 	// }
 	// printf("\n");
 	// c = b;
 	// while (c)
 	// {
-	// 	printf("%d ==> ", c->content);
+	// 	printf("{%d, %d} ==> ", c->content, c->index);
 	// 	c = c->next;
 	// }
 	// printf("\n");
@@ -57,7 +56,7 @@ void	ft_tests(t_list *stack)
 	// d = a;
 	// while (d)
 	// {
-	// 	printf("%d ==> ", d->content);
+	// 	printf("{%d, %d} ==> ", d->content, d->index);
 	// 	d = d->next;
 	// }
 	// printf("\n");

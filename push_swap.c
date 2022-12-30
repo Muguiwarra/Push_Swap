@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:43 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/29 02:36:45 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/30 01:10:21 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main(int ac, char **av)
 			ft_sort_2_numbers(&stack);
 		else if (size == 3)
 			ft_sort_3_numbers(&stack);
-		// ft_reverse_rotate_a(&stack);
+		else if (size <= 50)
+			ft_sort_50_numbers(&stack);
 		ft_tests(stack);
 	}
 }
