@@ -6,7 +6,7 @@
 #    By: nabboune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 15:59:07 by nabboune          #+#    #+#              #
-#    Updated: 2022/12/29 18:47:34 by nabboune         ###   ########.fr        #
+#    Updated: 2022/12/31 01:03:18 by nabboune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJS = $(SRCS:.c=.o)
 
 
 $(NAME) : $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) -fsanitize=address $(LIBFT) $(OBJS)
 
 $(LIBFT) :
 	cd Libft/ && $(MAKE)

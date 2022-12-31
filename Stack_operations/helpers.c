@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:37:04 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/30 00:28:38 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/31 02:33:33 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ int	ft_get_max(t_list *s)
 			max = s->content;
 		s = s->next;
 	}
+	return (max);
+}
+
+int	ft_get_max_out_of_3(t_list *s)
+{
+	int		max;
+	t_list	*last;
+
+	max = s->content;
+	last = ft_lstlast(s);
+	if (s->next && max < s->next->content)
+		max = s->next->content;
+	if (s->next && max < last->content)
+		max = last->content;
 	return (max);
 }
 
