@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:50 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/30 18:53:05 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/01 03:44:23 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,12 @@ void	ft_print_double_operation(void (*operation)(t_list **,
 
 void	ft_end_of_stack(t_list **s);
 int		ft_get_index(t_list *stack, int data);
+int		ft_where_to_push_oe(t_list *s, int x, int min);
+int		ft_where_to_push_ue(t_list *s, int x, int max);
 int		ft_get_max(t_list *s);
 int		ft_get_min(t_list *s);
 int		ft_get_max_out_of_3(t_list *s);
+int		ft_get_min_out_of_3(t_list *s);
 int		ft_a_is_sorted(t_list *s);
 int		ft_b_is_sorted(t_list *s);
 
@@ -62,5 +65,7 @@ void	ft_sort_50_numbers(t_list **a);
 void	ft_sort_400_numbers(t_list **a);
 
 void	ft_tests(t_list *stack);
+void	bubble_sort(int *array, int size);
+void	ft_get_indexes(int *tab, t_list *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 14:53:19 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/28 20:41:17 by nabboune         ###   ########.fr       */
+/*   Updated: 2022/12/31 18:56:05 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	ft_print_single_operation(void (*operation)(t_list **))
 		ft_printf("sa\n");
 	if (operation == &ft_swap_b_no_print)
 		ft_printf("sb\n");
-	else if (operation == &ft_rotate_a_no_print)
-		ft_printf("ra\n");
-	else if (operation == &ft_rotate_b_no_print)
-		ft_printf("rb\n");
 	else if (operation == &ft_reverse_rotate_a_no_print)
 		ft_printf("rra\n");
 	else if (operation == &ft_reverse_rotate_b_no_print)
 		ft_printf("rrb\n");
+	else if (operation == &ft_rotate_a_no_print)
+		ft_printf("ra\n");
+	else if (operation == &ft_rotate_b_no_print)
+		ft_printf("rb\n");
 }

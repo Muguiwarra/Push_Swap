@@ -6,7 +6,7 @@
 #    By: nabboune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 15:59:07 by nabboune          #+#    #+#              #
-#    Updated: 2022/12/31 01:03:18 by nabboune         ###   ########.fr        #
+#    Updated: 2023/01/01 03:18:36 by nabboune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS =	help_functions.c \
 		Utils/rotate.c \
 		Utils/swap.c \
 		Sorting/algo.c \
+		Sorting/Sort_Array.c \
 		tests.c
 
 OBJS = $(SRCS:.c=.o)
