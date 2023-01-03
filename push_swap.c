@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:43 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/01 03:28:55 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/02 21:35:38 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ int	main(int ac, char **av)
 			ft_sort_2_numbers(&stack);
 		else if (size == 3)
 			ft_sort_3_numbers(&stack);
-		else if (size <= 9)
+		else if (size <= 50)
 			ft_sort_50_numbers(&stack);
-		else
+		else if (size <= 499)
 			ft_sort_400_numbers(&stack);
+		else
+			ft_sort_500_numbers_and_more(&stack);
 		printf("\n");
 		ft_tests(stack);
 	}

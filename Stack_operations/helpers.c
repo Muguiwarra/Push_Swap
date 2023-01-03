@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:37:04 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/01 03:49:06 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/03 01:16:08 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,50 +42,6 @@ int	ft_get_max(t_list *s)
 	return (max);
 }
 
-// int	ft_get_max_out_of_3(t_list *s)
-// {
-// 	int		max;
-// 	t_list	*last;
-
-// 	max = s->content;
-// 	last = ft_lstlast(s);
-// 	if (s->next && max < s->next->content)
-// 		max = s->next->content;
-// 	if (s->next && max < last->content)
-// 		max = last->content;
-// 	return (max);
-// }
-
-int	ft_get_max_out_of_3(t_list *s)
-{
-	int		max;
-	t_list	*last;
-
-	max = s->index;
-	last = ft_lstlast(s);
-	if (max < s->next->index)
-		max = s->next->index;
-	if (max < last->index)
-		max = last->index;
-	return (max);
-}
-
-int	ft_get_min_out_of_3(t_list *s)
-{
-	int		min;
-	int		size;
-	t_list	*last;
-
-	min = s->index;
-	size = ft_lstsize(s);
-	last = ft_lstlast(s);
-	if (min > s->next->index && last->index > s->next->index)
-		return (1);
-	if (min > last->index && last->index < s->next->index)
-		return (size);
-	return (0);
-}
-
 int	ft_get_min(t_list *s)
 {
 	int	min;
@@ -115,42 +71,99 @@ int	ft_get_index(t_list *stack, int data)
 	return (i);
 }
 
-int	ft_where_to_push_oe(t_list *s, int x, int min)
+int	ft_get_max_index(t_list *stack)
 {
-	int	i;
+	int	index;
+
+	index = stack->index;
+	while (stack)
+	{
+		if (index < stack->index)
+			index = stack->index;
+		stack = stack->next;
+	}
+	return (index);
+}
+
+int	ft_get_sum(t_list *stack)
+{
+	int	sum;
+
+	sum = 0;
+	while (stack)
+	{
+		sum += stack->content;
+		stack = stack->next;
+	}
+	return (sum);
+}
+
+int	ft_index_chr(t_list *stack, int index)
+{
+	int	pos;
+
+	pos = 0;
+	while (stack)
+	{
+		if (stack->index == index)
+			return (pos);
+		pos++;
+		stack = stack->next;
+	}
+	return (pos);
+}
+
+int	ft_steps_to_get_n(t_list *s, int index)
+{
+	t_list	*tmp;
+	int		i;
+	int		j;
+	int		size;
 
 	i = 0;
-	while (s && s->content != min)
-	{
-		s = s->next;
-		i++;
-	}
+	j = 0;
+	size = ft_lstsize(s);
 	while (s)
 	{
-		if (s->content > x)
-			return (i);
+		if (s->index == index)
+			break ;
 		i++;
 		s = s->next;
+	}
+	while (tmp)
+	{
+		if (tmp->index == index - 1)
+			break ;
+		j++;
+		tmp = tmp->next;
+	}
+	if (size - i < i)
+	{
+		i = size - i;
+		return (-i);
 	}
 	return (i);
 }
 
-int	ft_where_to_push_ue(t_list *s, int x, int max)
+int	ft_steps_to_get_n_1(t_list *s, int index)
 {
-	int	i;
+	t_list	*tmp;
+	int		i;
+	int		size;
 
 	i = 0;
-	while (s && s->content != max)
-	{
-		s = s->next;
-		i++;
-	}
+	size = ft_lstsize(s);
 	while (s)
 	{
-		if (s->content < x)
-			return (i);
+		if (s->index == index)
+			break ;
 		i++;
 		s = s->next;
+	}
+	if (size - i < i)
+	{
+		i = size - i;
+		return (-i);
 	}
 	return (i);
 }
