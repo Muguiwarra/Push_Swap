@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 02:40:18 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/01 03:26:42 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/04 02:02:40 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	bubble_sort(int *array, int size)
 	int	i;
 	int	j;
 
-	for (i = 0; i < size - 1; i++)
+	i = 0;
+	while (i < size - 1)
 	{
-		for (j = 0; j < size - i - 1; j++)
+		j = 0;
+		while (j < size - i - 1)
 		{
 			if (array[j] > array[j + 1])
 			{
@@ -28,7 +30,9 @@ void	bubble_sort(int *array, int size)
 				array[j] = array[j + 1];
 				array[j + 1] = temp;
 			}
+			j++;
 		}
+		i++;
 	}
 }
 

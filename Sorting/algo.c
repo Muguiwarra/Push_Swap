@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:54:11 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/03 03:03:19 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/04 02:12:12 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	ft_sort_50_numbers(t_list **a)
 	ft_sort_3_numbers(a);
 	while (ft_lstsize(b) != 0)
 		ft_push_a(a, &b);
+	// free(b);
 }
 
 void	ft_sort_400_numbers(t_list **a)
@@ -82,8 +83,6 @@ void	ft_sort_400_numbers(t_list **a)
 	int		size;
 	int		chunk;
 	int		i;
-	int		pos;
-	int		max_index;
 
 	size = ft_lstsize(*a) / 5;
 	chunk = 1;
@@ -103,23 +102,8 @@ void	ft_sort_400_numbers(t_list **a)
 		if (i == size * chunk)
 			chunk++;
 	}
-	while (b)
-	{
-		max_index = ft_get_max_index(b);
-		pos = ft_index_chr(b, max_index);
-		if (b->index == max_index)
-			ft_push_a(a, &b);
-		else if (pos < ft_lstsize(b) / 2)
-		{
-			while (b->index != max_index)
-				ft_rotate_b(&b);
-		}
-		else
-		{
-			while (b->index != max_index)
-				ft_reverse_rotate_b(&b);
-		}
-	}
+	ft_push_back(a, &b);
+	// free(b);
 }
 
 void	ft_sort_500_numbers_and_more(t_list **a)
@@ -129,7 +113,7 @@ void	ft_sort_500_numbers_and_more(t_list **a)
 	int		chunk;
 	int		i;
 
-	size = ft_lstsize(*a) / 9;
+	size = ft_lstsize(*a) / 7;
 	chunk = 1;
 	i = 0;
 	b = NULL;
@@ -148,118 +132,36 @@ void	ft_sort_500_numbers_and_more(t_list **a)
 			chunk++;
 	}
 	ft_push_back(a, &b);
+	// free(b);
 }
-
-// void	ft_push_back(t_list **a, t_list **b)
-// {
-// 	int max_index;
-// 	int pos;
-// 	int i;
-
-// 	while (*b)
-// 	{
-// 		max_index = ft_get_max_index(*b);
-// 		pos = ft_index_chr(*b, max_index);
-// 		// if ((*b)->index == max_index - 1)
-// 		// ft_push_a(a, b);
-// 		i = 1;
-// 		if ((*b)->index == max_index - i)
-// 		{
-// 			ft_push_a(a, b);
-// 			if ((*a)->next)
-// 				ft_rotate_a(a);
-// 			i++;
-// 			while ((*b)->index == max_index - i)
-// 			{
-// 				ft_push_a(a, b);
-// 				ft_rotate_a(a);
-// 				i++;
-// 			}
-// 		}
-// 		if ((*b)->index == max_index)
-// 			ft_push_a(a, b);
-// 		else if (pos < ft_lstsize(*b) / 2)
-// 		{
-// 			if (pos == 1)
-// 				ft_swap_b(b);
-// 			while ((*b)->index != max_index)
-// 				ft_rotate_b(b);
-// 		}
-// 		else
-// 		{
-// 			while ((*b)->index != max_index)
-// 				ft_reverse_rotate_b(b);
-// 		}
-// 		if (i != 1)
-// 		{
-// 			while (i != 1)
-// 			{
-// 				ft_reverse_rotate_a(a);
-// 				i--;
-// 			}
-// 		}
-// 		if ((*a) && (*a)->next && (*a)->index > (*a)->next->index
-// 			&& (*b)->index < (*b)->next->index)
-// 			ft_ss(a, b);
-// 		if ((*a) && (*a)->next && (*a)->index > (*a)->next->index)
-// 			ft_swap_a(a);
-// 	}
-// }
 
 void	ft_push_back(t_list **a, t_list **b)
 {
-	int max_index;
-	int pos;
-	int i;
-	int step_n;
-	int step_n_1;
+	int	*arr;
+	int	max;
 
 	while (*b)
 	{
-		max_index = ft_get_max_index(*b);
-		pos = ft_index_chr(*b, max_index);
-		i = 1;
-		step_n = ft_steps_to_get_n(*b, max_index);
-		step_n_1 = ft_steps_to_get_n_1(*b, max_index - i);
-		if (step_n < 0 && step_n_1 < 0)
+		if (ft_lstsize(*b) == 1)
 		{
-			step_n = step_n * (-1);
-			step_n_1 = step_n_1 * (-1);
-			if (step_n < step_n_1)
-			{
-				while (step_n != 0)
-				{
-					ft_reverse_rotate_b(b);
-					step_n--;
-				}
-			}
-			else if (step_n > step_n_1)
-			{
-				while (step_n_1 != 0)
-				{
-					ft_reverse_rotate_b(b);
-					step_n_1--;
-				}
-			}
+			ft_push_a(a, b);
+			continue ;
 		}
-		else if (step_n > 0 && step_n_1 > 0)
+		max = ft_get_max(*b);
+		arr = get_max1_max2(b);
+		// if (arr == NULL)
+		// {
+		// 	free(a);
+		// 	a = NULL;
+		// 	return ;
+		// }
+		if (max == arr[0])
+			ft_push(a, b, arr[0]);
+		else
 		{
-			if (step_n < step_n_1)
-			{
-				while (step_n != 0)
-				{
-					ft_rotate_b(b);
-					step_n--;
-				}
-			}
-			else if (step_n > step_n_1)
-			{
-				while (step_n_1 != 0)
-				{
-					ft_rotate_b(b);
-					step_n_1--;
-				}
-			}
+			ft_push(a, b, arr[0]);
+			ft_push(a, b, arr[1]);
 		}
+		// free(arr);
 	}
 }

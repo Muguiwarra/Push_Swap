@@ -6,7 +6,7 @@
 #    By: nabboune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 15:59:07 by nabboune          #+#    #+#              #
-#    Updated: 2023/01/01 03:18:36 by nabboune         ###   ########.fr        #
+#    Updated: 2023/01/03 23:46:58 by nabboune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,14 +31,13 @@ SRCS =	help_functions.c \
 		Utils/rotate.c \
 		Utils/swap.c \
 		Sorting/algo.c \
-		Sorting/Sort_Array.c \
-		tests.c
+		Sorting/Sort_Array.c
 
 OBJS = $(SRCS:.c=.o)
 
 
 $(NAME) : $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -fsanitize=address $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(LIBFT) $(OBJS)
 
 $(LIBFT) :
 	cd Libft/ && $(MAKE)

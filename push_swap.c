@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:43 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/02 21:35:38 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/04 02:06:37 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 		stack = ft_stack_creation(size, tab);
 		bubble_sort(tab, size);
 		ft_get_indexes(tab, stack);
+		// free(tab);
 		if (size == 2)
 			ft_sort_2_numbers(&stack);
 		else if (size == 3)
@@ -39,7 +40,6 @@ int	main(int ac, char **av)
 			ft_sort_400_numbers(&stack);
 		else
 			ft_sort_500_numbers_and_more(&stack);
-		printf("\n");
-		ft_tests(stack);
+		system("leaks push_swap");
 	}
 }

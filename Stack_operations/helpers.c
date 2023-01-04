@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:37:04 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/03 01:16:08 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/04 00:00:27 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,63 @@ int	ft_get_max(t_list *s)
 	return (max);
 }
 
+int	ft_get_max2(t_list *stack, int max)
+{
+	int	max2;
+
+	max2 = stack->content;
+	if (stack->content == max)
+		max2 = stack->next->content;
+	while (stack)
+	{
+		if (stack->content < max && stack->content > max2)
+			max2 = stack->content;
+		stack = stack->next;
+	}
+	return (max2);
+}
+
+int	*get_max1_max2(t_list **b)
+{
+	int	res[2];
+	int	index[2];
+	int	max[2];
+	int	*target;
+	int	size;
+
+	target = (int *)malloc(2 * sizeof(int));
+	// if (!target)
+	// {
+	// 	free(b);
+	// 	b = NULL;
+	// 	return (0);
+	// }
+	size = ft_lstsize(*b);
+	max[0] = ft_get_max(*b);
+	max[1] = ft_get_max2(*b, max[0]);
+	index[0] = ft_get_index(*b, max[0]);
+	index[1] = ft_get_index(*b, max[1]);
+	if (index[0] < size / 2)
+		res[0] = index[0] + 1;
+	else
+		res[0] = size - index[0] + 2;
+	if (index[1] < size / 2)
+		res[1] = index[1] + 1;
+	else
+		res[1] = size - index[1] + 2;
+	if (res[0] < res[1])
+	{
+		target[0] = max[0];
+		target[1] = max[1];
+	}
+	else
+	{
+		target[0] = max[1];
+		target[1] = max[0];
+	}
+	return (target);
+}
+
 int	ft_get_min(t_list *s)
 {
 	int	min;
@@ -67,103 +124,6 @@ int	ft_get_index(t_list *stack, int data)
 			return (i);
 		i++;
 		stack = stack->next;
-	}
-	return (i);
-}
-
-int	ft_get_max_index(t_list *stack)
-{
-	int	index;
-
-	index = stack->index;
-	while (stack)
-	{
-		if (index < stack->index)
-			index = stack->index;
-		stack = stack->next;
-	}
-	return (index);
-}
-
-int	ft_get_sum(t_list *stack)
-{
-	int	sum;
-
-	sum = 0;
-	while (stack)
-	{
-		sum += stack->content;
-		stack = stack->next;
-	}
-	return (sum);
-}
-
-int	ft_index_chr(t_list *stack, int index)
-{
-	int	pos;
-
-	pos = 0;
-	while (stack)
-	{
-		if (stack->index == index)
-			return (pos);
-		pos++;
-		stack = stack->next;
-	}
-	return (pos);
-}
-
-int	ft_steps_to_get_n(t_list *s, int index)
-{
-	t_list	*tmp;
-	int		i;
-	int		j;
-	int		size;
-
-	i = 0;
-	j = 0;
-	size = ft_lstsize(s);
-	while (s)
-	{
-		if (s->index == index)
-			break ;
-		i++;
-		s = s->next;
-	}
-	while (tmp)
-	{
-		if (tmp->index == index - 1)
-			break ;
-		j++;
-		tmp = tmp->next;
-	}
-	if (size - i < i)
-	{
-		i = size - i;
-		return (-i);
-	}
-	return (i);
-}
-
-int	ft_steps_to_get_n_1(t_list *s, int index)
-{
-	t_list	*tmp;
-	int		i;
-	int		size;
-
-	i = 0;
-	size = ft_lstsize(s);
-	while (s)
-	{
-		if (s->index == index)
-			break ;
-		i++;
-		s = s->next;
-	}
-	if (size - i < i)
-	{
-		i = size - i;
-		return (-i);
 	}
 	return (i);
 }
@@ -196,4 +156,34 @@ int	ft_b_is_sorted(t_list *s)
 		tmp = tmp->next;
 	}
 	return (1);
+}
+
+void	fix_stack_a(t_list **a)
+{
+	if (ft_lstsize(*a) > 1)
+		if ((*a)->content > (*a)->next->content)
+			ft_swap_a(a);
+}
+
+void	ft_push(t_list **a, t_list **b, int data)
+{
+	int	size;
+	int	index;
+
+	fix_stack_a(a);
+	while (1)
+	{
+		size = ft_lstsize(*b);
+		index = ft_get_index(*b, data);
+		if (index == 0)
+		{
+			ft_push_a(a, b);
+			fix_stack_a(a);
+			break ;
+		}
+		if (index > size / 2)
+			ft_reverse_rotate_b(b);
+		else
+			ft_rotate_b(b);
+	}
 }

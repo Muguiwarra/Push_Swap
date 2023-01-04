@@ -6,17 +6,9 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:36:14 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/30 00:23:43 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/04 01:56:44 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// ==> 1) Split the av arguments
-// ==> 2) Get a table of strings representing each single number passed by the user
-// ==> 3) Create a table of int out of (2)
-// ==> 4) Build a stack representing the int array
-
-// ==> FUNCTIONS :
-// ==> 1) Split the av arguments
 
 #include "push_swap.h"
 
@@ -29,13 +21,13 @@ char	***ft_split_arguments(int ac, char **av)
 	i = 1;
 	j = 0;
 	cttab = (char ***)malloc(ac * sizeof(char **));
+	if (!cttab)
+		return (0);
 	while (av[i])
 		cttab[j++] = ft_split(av[i++], ' ');
 	cttab[j] = 0;
 	return (cttab);
 }
-
-// ==> 2) Get a table of strings representing each single number passed by the user
 
 int	ft_how_many_numbers(char ***cttab)
 {
@@ -66,6 +58,12 @@ char	**ft_char_tab(int nb, char ***cttab)
 	int		k;
 
 	ctab = (char **)malloc(nb * sizeof(char *));
+	if (!ctab)
+	{
+		free(cttab);
+		cttab = NULL;
+		return (0);
+	}
 	i = 0;
 	k = 0;
 	while (cttab[i])
@@ -75,10 +73,9 @@ char	**ft_char_tab(int nb, char ***cttab)
 			ctab[k++] = cttab[i][j++];
 		i++;
 	}
+	free(cttab);
 	return (ctab);
 }
-
-// ==> 3) Create a table of int out of (2)
 
 int	*ft_int_tab(int size, char **ctab)
 {
@@ -87,15 +84,20 @@ int	*ft_int_tab(int size, char **ctab)
 
 	i = 0;
 	tab = (int *)malloc(size * sizeof(int));
+	if (!tab)
+	{
+		free(ctab);
+		ctab = NULL;
+		return (0);
+	}
 	while (i < size)
 	{
 		tab[i] = ft_atoi(ctab[i]);
 		i++;
 	}
+	free(ctab);
 	return (tab);
 }
-
-// ==> 4) Build a stack representing the int array
 
 t_list	*ft_stack_creation(int size, int *tab)
 {
@@ -105,6 +107,12 @@ t_list	*ft_stack_creation(int size, int *tab)
 
 	i = 1;
 	node = (t_list **)malloc(size * sizeof(t_list *));
+	if (!node)
+	{
+		free(tab);
+		tab = NULL;
+		return (0);
+	}
 	node[0] = ft_lstnew(tab[0]);
 	while (i < size)
 	{

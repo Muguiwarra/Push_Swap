@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:50 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/03 02:41:16 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/03 22:34:56 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,12 @@ void	ft_end_of_stack(t_list **s);
 int		ft_get_index(t_list *stack, int data);
 int		ft_get_max(t_list *s);
 int		ft_get_min(t_list *s);
-int		ft_get_sum(t_list *stack);
+int		ft_get_max2(t_list *stack, int max);
+int		*get_max1_max2(t_list **b);
 int		ft_a_is_sorted(t_list *s);
 int		ft_b_is_sorted(t_list *s);
-int		ft_steps_to_get_n(t_list *s, int index);
-int		ft_steps_to_get_n_1(t_list *s, int index);
-
-int		ft_index_chr(t_list *stack, int index);
-int		ft_get_max_index(t_list *stack);
+void	fix_stack_a(t_list **a);
+void	ft_push(t_list **a, t_list **b, int pos);
 
 void	ft_sort_2_numbers(t_list **a);
 void	ft_sort_3_numbers(t_list **a);
