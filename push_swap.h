@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:50 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/03 22:34:56 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/05 23:48:49 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ void	ft_push_back(t_list **a, t_list **b);
 void	ft_tests(t_list *stack);
 void	bubble_sort(int *array, int size);
 void	ft_get_indexes(int *tab, t_list *stack);
+
+void	ft_del(int data);
 
 #endif

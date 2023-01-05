@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:43 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/04 02:06:37 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/05 23:58:45 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_list *stack;
+	// t_list *tmp;
 	char ***cttab;
 	char **ctab;
 	int *tab;
@@ -29,7 +30,7 @@ int	main(int ac, char **av)
 		stack = ft_stack_creation(size, tab);
 		bubble_sort(tab, size);
 		ft_get_indexes(tab, stack);
-		// free(tab);
+		free(tab);
 		if (size == 2)
 			ft_sort_2_numbers(&stack);
 		else if (size == 3)

@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:54:11 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/04 02:12:12 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/06 00:10:37 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,12 +149,12 @@ void	ft_push_back(t_list **a, t_list **b)
 		}
 		max = ft_get_max(*b);
 		arr = get_max1_max2(b);
-		// if (arr == NULL)
-		// {
-		// 	free(a);
-		// 	a = NULL;
-		// 	return ;
-		// }
+		if (arr == NULL)
+		{
+			free(a);
+			a = NULL;
+			return ;
+		}
 		if (max == arr[0])
 			ft_push(a, b, arr[0]);
 		else
@@ -162,6 +162,6 @@ void	ft_push_back(t_list **a, t_list **b)
 			ft_push(a, b, arr[0]);
 			ft_push(a, b, arr[1]);
 		}
-		// free(arr);
+		free(arr);
 	}
 }

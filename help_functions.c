@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:36:14 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/04 01:56:44 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/06 00:09:46 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,22 @@ char	**ft_char_tab(int nb, char ***cttab)
 	int		k;
 
 	ctab = (char **)malloc(nb * sizeof(char *));
+	i = 0;
 	if (!ctab)
 	{
+		while (cttab[i])
+			free(cttab[i++]);
 		free(cttab);
 		cttab = NULL;
 		return (0);
 	}
-	i = 0;
 	k = 0;
 	while (cttab[i])
 	{
 		j = 0;
 		while (cttab[i][j])
 			ctab[k++] = cttab[i][j++];
+		free(cttab[i]);
 		i++;
 	}
 	free(cttab);
@@ -86,8 +89,8 @@ int	*ft_int_tab(int size, char **ctab)
 	tab = (int *)malloc(size * sizeof(int));
 	if (!tab)
 	{
-		free(ctab);
-		ctab = NULL;
+		// free(ctab);
+		// ctab = NULL;
 		return (0);
 	}
 	while (i < size)
@@ -95,31 +98,18 @@ int	*ft_int_tab(int size, char **ctab)
 		tab[i] = ft_atoi(ctab[i]);
 		i++;
 	}
-	free(ctab);
+	// free(ctab);
 	return (tab);
 }
 
 t_list	*ft_stack_creation(int size, int *tab)
 {
-	t_list **node;
 	t_list *stack;
 	int i;
 
-	i = 1;
-	node = (t_list **)malloc(size * sizeof(t_list *));
-	if (!node)
-	{
-		free(tab);
-		tab = NULL;
-		return (0);
-	}
-	node[0] = ft_lstnew(tab[0]);
+	i = 0;
+	stack = ft_lstnew(tab[i++]);
 	while (i < size)
-	{
-		node[i] = ft_lstnew(tab[i]);
-		node[i - 1]->next = node[i];
-		i++;
-	}
-	stack = node[0];
+		ft_lstadd_back(&stack, ft_lstnew(tab[i++]));
 	return (stack);
 }

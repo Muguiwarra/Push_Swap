@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 01:32:10 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/24 00:32:53 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:05:12 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ static void	ft_fptr(char **ptr, char const *s, size_t l, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**ptr;
-	size_t	l;
-	int		nc;
-	int		i;
+	char **ptr;
+	size_t l;
+	int nc;
+	int i;
 
 	if (!s)
 		return (0);

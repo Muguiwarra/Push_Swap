@@ -6,7 +6,7 @@
 #    By: nabboune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 15:59:07 by nabboune          #+#    #+#              #
-#    Updated: 2023/01/03 23:46:58 by nabboune         ###   ########.fr        #
+#    Updated: 2023/01/05 23:48:39 by nabboune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRCS =	help_functions.c \
 		Sorting/Sort_Array.c
 
 OBJS = $(SRCS:.c=.o)
-
 
 $(NAME) : $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(LIBFT) $(OBJS)
