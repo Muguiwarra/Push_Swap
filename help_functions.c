@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:36:14 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/06 00:09:46 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/06 14:44:08 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,30 @@ int	*ft_int_tab(int size, char **ctab)
 
 t_list	*ft_stack_creation(int size, int *tab)
 {
-	t_list *stack;
-	int i;
+	t_list	*stack;
+	int		i;
 
 	i = 0;
 	stack = ft_lstnew(tab[i++]);
 	while (i < size)
 		ft_lstadd_back(&stack, ft_lstnew(tab[i++]));
 	return (stack);
+}
+
+int	ft_check_doubles(t_list *stack)
+{
+	t_list	*tmp;
+
+	while (stack)
+	{
+		tmp = stack->next;
+		while (tmp)
+		{
+			if (stack->content == tmp->content)
+				return (0);
+			tmp = tmp->next;
+		}
+		stack = stack->next;
+	}
+	return (1);
 }

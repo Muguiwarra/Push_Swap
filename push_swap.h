@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:50 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/05 23:48:49 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/06 14:30:39 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		ft_how_many_numbers(char ***cttab);
 char	**ft_char_tab(int nb, char ***cttab);
 int		*ft_int_tab(int size, char **ctab);
 t_list	*ft_stack_creation(int size, int *tab);
+int		ft_check_doubles(t_list *stack);
 void	ft_print_single_operation(void (*operation)(t_list **));
 void	ft_print_double_operation(void (*operation)(t_list **,
 													t_list **));
