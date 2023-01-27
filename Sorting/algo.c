@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:54:11 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/06 00:10:37 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:40:57 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,13 @@ void	ft_sort_50_numbers(t_list **a)
 			continue ;
 		}
 		if (index < size / 2)
-		{
 			ft_rotate_a(a);
-		}
 		else
 			ft_reverse_rotate_a(a);
 	}
 	ft_sort_3_numbers(a);
 	while (ft_lstsize(b) != 0)
 		ft_push_a(a, &b);
-	// free(b);
 }
 
 void	ft_sort_400_numbers(t_list **a)
@@ -103,7 +100,6 @@ void	ft_sort_400_numbers(t_list **a)
 			chunk++;
 	}
 	ft_push_back(a, &b);
-	// free(b);
 }
 
 void	ft_sort_500_numbers_and_more(t_list **a)
@@ -132,36 +128,4 @@ void	ft_sort_500_numbers_and_more(t_list **a)
 			chunk++;
 	}
 	ft_push_back(a, &b);
-	// free(b);
-}
-
-void	ft_push_back(t_list **a, t_list **b)
-{
-	int	*arr;
-	int	max;
-
-	while (*b)
-	{
-		if (ft_lstsize(*b) == 1)
-		{
-			ft_push_a(a, b);
-			continue ;
-		}
-		max = ft_get_max(*b);
-		arr = get_max1_max2(b);
-		if (arr == NULL)
-		{
-			free(a);
-			a = NULL;
-			return ;
-		}
-		if (max == arr[0])
-			ft_push(a, b, arr[0]);
-		else
-		{
-			ft_push(a, b, arr[0]);
-			ft_push(a, b, arr[1]);
-		}
-		free(arr);
-	}
 }

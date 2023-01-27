@@ -6,13 +6,13 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:09:36 by nabboune          #+#    #+#             */
-/*   Updated: 2022/10/26 00:15:23 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:23:30 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int				i;
 	int				m;
@@ -38,5 +38,5 @@ int	ft_atoi(const char *str)
 			return (0);
 		i++;
 	}
-	return ((int)(nb * m));
+	return ((long)(nb * m));
 }

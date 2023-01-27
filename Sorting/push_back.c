@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 02:05:40 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/26 22:33:49 by nabboune         ###   ########.fr       */
+/*   Created: 2023/01/26 22:57:21 by nabboune          #+#    #+#             */
+/*   Updated: 2023/01/26 23:08:14 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
+void	ft_push_back(t_list **a, t_list **b)
+{
+	int	*arr;
+	int	max;
 
-# include "../libft.h"
-
-int		ft_strlen_m(char *str);
-char	*ft_substr_m(char *str, int start, int end);
-char	*ft_newline(char *str, int index);
-int		ft_strchr_m(char *str, char c);
-void	ft_free(char *str);
-char	*get_next_line(int fd);
-
-#endif
+	while (*b)
+	{
+		if (ft_lstsize(*b) == 1)
+		{
+			ft_push_a(a, b);
+			continue ;
+		}
+		max = ft_get_max(*b);
+		arr = get_max1_max2(b);
+		if (!arr)
+			return (free(a));
+		if (max == arr[0])
+			ft_push(a, b, arr[0]);
+		else
+		{
+			ft_push(a, b, arr[0]);
+			ft_push(a, b, arr[1]);
+		}
+		free(arr);
+	}
+}

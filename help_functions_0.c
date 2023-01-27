@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help_functions.c                                   :+:      :+:    :+:   */
+/*   help_functions_0.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:36:14 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/06 14:44:08 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/27 01:41:57 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_how_many_numbers(char ***cttab)
 	int	j;
 	int	l;
 
+	if (!cttab)
+		return (-1);
 	i = 0;
 	l = 0;
 	while (cttab[i])
@@ -50,6 +52,22 @@ int	ft_how_many_numbers(char ***cttab)
 	return (l);
 }
 
+void	ft_free_cttab(char ***cttab)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (cttab[i])
+	{
+		j = 0;
+		while (cttab[i][j])
+			free(cttab[i][j++]);
+		free(cttab[i++]);
+	}
+	free(cttab);
+}
+
 char	**ft_char_tab(int nb, char ***cttab)
 {
 	char	**ctab;
@@ -57,14 +75,13 @@ char	**ft_char_tab(int nb, char ***cttab)
 	int		j;
 	int		k;
 
-	ctab = (char **)malloc(nb * sizeof(char *));
+	if (!cttab)
+		return (0);
 	i = 0;
+	ctab = (char **)malloc(nb * sizeof(char *));
 	if (!ctab)
 	{
-		while (cttab[i])
-			free(cttab[i++]);
-		free(cttab);
-		cttab = NULL;
+		ft_free_cttab(cttab);
 		return (0);
 	}
 	k = 0;
@@ -73,33 +90,9 @@ char	**ft_char_tab(int nb, char ***cttab)
 		j = 0;
 		while (cttab[i][j])
 			ctab[k++] = cttab[i][j++];
-		free(cttab[i]);
 		i++;
 	}
-	free(cttab);
 	return (ctab);
-}
-
-int	*ft_int_tab(int size, char **ctab)
-{
-	int	*tab;
-	int	i;
-
-	i = 0;
-	tab = (int *)malloc(size * sizeof(int));
-	if (!tab)
-	{
-		// free(ctab);
-		// ctab = NULL;
-		return (0);
-	}
-	while (i < size)
-	{
-		tab[i] = ft_atoi(ctab[i]);
-		i++;
-	}
-	// free(ctab);
-	return (tab);
 }
 
 t_list	*ft_stack_creation(int size, int *tab)
@@ -107,27 +100,11 @@ t_list	*ft_stack_creation(int size, int *tab)
 	t_list	*stack;
 	int		i;
 
+	if (!tab)
+		return (0);
 	i = 0;
 	stack = ft_lstnew(tab[i++]);
 	while (i < size)
 		ft_lstadd_back(&stack, ft_lstnew(tab[i++]));
 	return (stack);
-}
-
-int	ft_check_doubles(t_list *stack)
-{
-	t_list	*tmp;
-
-	while (stack)
-	{
-		tmp = stack->next;
-		while (tmp)
-		{
-			if (stack->content == tmp->content)
-				return (0);
-			tmp = tmp->next;
-		}
-		stack = stack->next;
-	}
-	return (1);
 }

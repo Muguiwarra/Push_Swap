@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 02:40:18 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/04 02:02:40 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:34:19 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	bubble_sort(int *array, int size)
 
 void	ft_get_indexes(int *tab, t_list *s)
 {
-	int i;
+	int	i;
 
 	while (s)
 	{
@@ -48,4 +48,5 @@ void	ft_get_indexes(int *tab, t_list *s)
 		s->index = i;
 		s = s->next;
 	}
+	free(tab);
 }
