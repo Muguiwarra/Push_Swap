@@ -6,13 +6,15 @@
 #    By: nabboune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 15:59:07 by nabboune          #+#    #+#              #
-#    Updated: 2023/01/27 01:47:47 by nabboune         ###   ########.fr        #
+#    Updated: 2023/01/27 03:07:39 by nabboune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 LIBFT = libft.a
+
+CHECKER = checker
 
 CC = gcc
 
@@ -37,7 +39,11 @@ SRCS =	help_functions_0.c \
 		Sorting/push_back.c \
 		Sorting/Sort_Array.c
 
+SRCS_BONUS = checker.c
+
 OBJS = $(SRCS:.c=.o)
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 $(NAME) : $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(LIBFT) $(OBJS)
@@ -45,7 +51,12 @@ $(NAME) : $(OBJS) $(LIBFT)
 $(LIBFT) :
 	cd Libft/ && $(MAKE)
 
+$(CHECKER) : $(NAME) $(OBJS_BONUS)
+	$(CC) $(CFLAGS) -o $(CHECKER) $(NAME) $(OBJS_BONUS)
+
 all : $(NAME)
+
+bonus : $(CHECKER)
 
 clean :
 	cd Libft && $(MAKE) clean && cd .. && $(RM) $(OBJS) && $(RM) libft.a
