@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate_no_print.c                          :+:      :+:    :+:   */
+/*   rotate_no_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:12:29 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/31 18:53:55 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/27 23:18:19 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_rotate_a_no_print(t_list **a)
+int	ft_rotate_a_no_print(t_list **a)
 {
 	t_list	*top;
 	t_list	*second;
 	t_list	*last;
 
+	if (!*a)
+		return (0);
 	if (ft_lstsize(*a) == 1)
-		return ;
+		return (1);
 	else if (ft_lstsize(*a) == 2)
 		ft_swap_a_no_print(a);
 	else
@@ -31,16 +33,19 @@ void	ft_rotate_a_no_print(t_list **a)
 		top->next = NULL;
 		*a = second;
 	}
+	return (1);
 }
 
-void	ft_rotate_b_no_print(t_list **b)
+int	ft_rotate_b_no_print(t_list **b)
 {
 	t_list	*top;
 	t_list	*second;
 	t_list	*last;
 
+	if (!*b)
+		return (0);
 	if (ft_lstsize(*b) == 1)
-		return ;
+		return (1);
 	else if (ft_lstsize(*b) == 2)
 		ft_swap_a_no_print(b);
 	else
@@ -52,10 +57,12 @@ void	ft_rotate_b_no_print(t_list **b)
 		top->next = NULL;
 		*b = second;
 	}
+	return (1);
 }
 
-void	ft_rotate_no_print(t_list **a, t_list **b)
+int	ft_rotate_no_print(t_list **a, t_list **b)
 {
-	ft_reverse_rotate_a_no_print(a);
-	ft_reverse_rotate_b_no_print(b);
+	if (!ft_reverse_rotate_a_no_print(a) || !ft_reverse_rotate_b_no_print(b))
+		return (0);
+	return (1);
 }

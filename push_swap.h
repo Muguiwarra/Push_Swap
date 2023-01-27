@@ -6,7 +6,7 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 03:24:50 by nabboune          #+#    #+#             */
-/*   Updated: 2023/01/26 22:37:38 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/27 23:20:33 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 # include "Libft/libft.h"
 
-void	ft_swap_a_no_print(t_list **a);
-void	ft_swap_b_no_print(t_list **b);
-void	ft_ss_no_print(t_list **a, t_list **b);
-void	ft_push_a_no_print(t_list **a, t_list **b);
-void	ft_push_b_no_print(t_list **a, t_list **b);
-void	ft_rotate_a_no_print(t_list **a);
-void	ft_rotate_b_no_print(t_list **b);
-void	ft_rotate_no_print(t_list **a, t_list **b);
-void	ft_reverse_rotate_a_no_print(t_list **a);
-void	ft_reverse_rotate_b_no_print(t_list **b);
-void	ft_reverse_rotate_no_print(t_list **a, t_list **b);
+int		ft_swap_a_no_print(t_list **a);
+int		ft_swap_b_no_print(t_list **b);
+int		ft_ss_no_print(t_list **a, t_list **b);
+int		ft_push_a_no_print(t_list **a, t_list **b);
+int		ft_push_b_no_print(t_list **a, t_list **b);
+int		ft_rotate_a_no_print(t_list **a);
+int		ft_rotate_b_no_print(t_list **b);
+int		ft_rotate_no_print(t_list **a, t_list **b);
+int		ft_reverse_rotate_a_no_print(t_list **a);
+int		ft_reverse_rotate_b_no_print(t_list **b);
+int		ft_reverse_rotate_no_print(t_list **a, t_list **b);
 
 void	ft_swap_a(t_list **a);
 void	ft_swap_b(t_list **b);
@@ -48,8 +48,8 @@ int		ft_verify_max_min_int(char **ctab, int size);
 int		*ft_int_tab(int size, char **ctab);
 t_list	*ft_stack_creation(int size, int *tab);
 int		ft_check_doubles(t_list *stack);
-void	ft_print_single_operation(void (*operation)(t_list **));
-void	ft_print_double_operation(void (*operation)(t_list **,
+void	ft_print_single_operation(int (*operation)(t_list **));
+void	ft_print_double_operation(int (*operation)(t_list **,
 				t_list **));
 
 void	ft_end_of_stack(t_list **s);

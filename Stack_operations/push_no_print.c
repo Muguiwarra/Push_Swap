@@ -6,19 +6,19 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:01:08 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/28 20:33:43 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/27 23:10:25 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_push_a_no_print(t_list **a, t_list **b)
+int	ft_push_a_no_print(t_list **a, t_list **b)
 {
 	t_list	*top_b;
 	t_list	*top_a;
 
 	if (!(*b))
-		return ;
+		return (0);
 	if (!(*a))
 	{
 		*a = *b;
@@ -33,15 +33,16 @@ void	ft_push_a_no_print(t_list **a, t_list **b)
 		(*a)->next = top_a;
 		*b = top_b;
 	}
+	return (1);
 }
 
-void	ft_push_b_no_print(t_list **a, t_list **b)
+int	ft_push_b_no_print(t_list **a, t_list **b)
 {
 	t_list	*top_a;
 	t_list	*top_b;
 
 	if (!(*a))
-		return ;
+		return (0);
 	if (!(*b))
 	{
 		*b = *a;
@@ -56,4 +57,5 @@ void	ft_push_b_no_print(t_list **a, t_list **b)
 		(*b)->next = top_b;
 		*a = top_a;
 	}
+	return (1);
 }

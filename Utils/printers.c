@@ -6,13 +6,13 @@
 /*   By: nabboune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 14:53:19 by nabboune          #+#    #+#             */
-/*   Updated: 2022/12/31 18:56:05 by nabboune         ###   ########.fr       */
+/*   Updated: 2023/01/27 23:19:45 by nabboune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_print_double_operation(void (*operation)(t_list **, t_list **))
+void	ft_print_double_operation(int (*operation)(t_list **, t_list **))
 {
 	if (operation == &ft_ss_no_print)
 		ft_printf("ss\n");
@@ -26,7 +26,7 @@ void	ft_print_double_operation(void (*operation)(t_list **, t_list **))
 		ft_printf("rrr\n");
 }
 
-void	ft_print_single_operation(void (*operation)(t_list **))
+void	ft_print_single_operation(int (*operation)(t_list **))
 {
 	if (operation == &ft_swap_a_no_print)
 		ft_printf("sa\n");
