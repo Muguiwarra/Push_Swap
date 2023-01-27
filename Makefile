@@ -6,7 +6,7 @@
 #    By: nabboune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 15:59:07 by nabboune          #+#    #+#              #
-#    Updated: 2023/01/26 23:02:13 by nabboune         ###   ########.fr        #
+#    Updated: 2023/01/27 01:47:47 by nabboune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ clean :
 	cd Libft && $(MAKE) clean && cd .. && $(RM) $(OBJS) && $(RM) libft.a
 
 fclean : clean
-	cd Libft && $(MAKE) fclean && cd .. && $(RM) $(LIBFT)
+	cd Libft && $(MAKE) fclean && cd .. && $(RM) $(LIBFT) $(NAME)
 
 re : fclean all
 
